@@ -1,0 +1,23 @@
+.Footer{
+    font-family: 'Montserrat', sans-serif;
+    color: var(--clr-primary);
+    font-size: 1.6rem;
+    text-align: center;
+    padding-block: 3.5rem;
+}
+.Footer>h4{
+    font-weight: 600;
+}
+.copyright{
+    font-weight: 200;
+    font-size: 0.7rem;
+}
+.social{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+}
+/* .social *{
+    cursor: pointer;
+} */

@@ -1,38 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 .App {
+  position: relative;
+  background-color: #E7F4FF;
+}
+:root{
+  --clr-primary:#158FC3;
+}
+*{
+  box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn:focus, .btn{
+  outline: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero{
+  position:relative;
+  text-align: center; 
+  background-color: var(--clr-primary);
+  color: #BEE0FF;
+  padding-block: 4rem;
+  clip-path: ellipse(80% 90% at 51% 0%);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hero>h1{
+  font-size: 3em;
+  font-weight: 900;
+}
+.hero>p,.hero>h1{
+  margin-block: 0em;
+}
+.search{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+  gap: 0.5em;
+  margin:2em 20em;
+}
+.search>.btn{
+  background-color: #53CBFE;
+  color: #414749;
+}
+.App>.btn{
+  position: absolute;
+  background-color: #10A4F8;
+  padding-inline: 1rem;
+  font-size: 1.2em;
+  left: 40%;
+  right: 40%;
+  top: 22%;
+  z-index: 5000;
+}
+.whatIsUV{
+  padding: 1rem 5rem 1rem 5rem;
+  margin:2rem 10rem ;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  color: var(--clr-primary);
+  border: var(--clr-primary) 2px solid;
+}
+.whatIsUV>h3{
+  font-weight: 400;
+  font-size: 1.5em;
+  /* color: #414749; */
+}
+.whatUVDo{
+  background-color: var(--clr-primary);
   color: white;
+  padding: 2rem 10rem 2rem 10rem;
+  font-family: 'Work Sans', sans-serif;
 }
-
-.App-link {
-  color: #61dafb;
+.whatUVDo>h3{
+  font-weight: 400;
+  font-size: 1.5em;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.whatUVDo>p{
+  text-align: center;
 }
