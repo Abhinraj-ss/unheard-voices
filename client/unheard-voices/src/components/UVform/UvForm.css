@@ -1,0 +1,33 @@
+.UvForm{
+    position: relative;
+    margin-top: 2rem;
+}
+.UvForm .card{
+    margin-inline: 10rem;
+    border-radius: 1vmax;
+    padding: 2rem;
+}
+.card-header{
+    background-color: transparent;
+}
+.UvForm .card-body, form{
+    display: flex;
+    flex-direction: column;
+}
+.form-group{
+    outline: auto;
+}
+.UvForm .btn-primary{
+    background-color: var(--clr-primary);
+    align-self: center;
+    min-width: 8rem;
+}
+.UvForm >span{
+    display: block;
+    position: absolute;
+    text-align: center;
+    left: 0%;
+    right: 0%;
+    bottom: -10%;
+    color: var(--clr-primary);
+}

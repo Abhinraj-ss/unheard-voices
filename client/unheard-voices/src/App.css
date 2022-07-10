@@ -6,6 +6,7 @@
 }
 :root{
   --clr-primary:#158FC3;
+  --clr-secondary:#10A4F8;
 }
 *{
   box-sizing: border-box;
@@ -16,65 +17,5 @@ h1,h2,h3,h4,h5,h6{
 }
 .btn:focus, .btn{
   outline: none;
-}
-.hero{
-  position:relative;
-  text-align: center; 
-  background-color: var(--clr-primary);
-  color: #BEE0FF;
-  padding-block: 4rem;
-  clip-path: ellipse(80% 90% at 51% 0%);
-}
-.hero>h1{
-  font-size: 3em;
-  font-weight: 900;
-}
-.hero>p,.hero>h1{
-  margin-block: 0em;
-}
-.search{
-  display: flex;
-  flex-direction: row;
-  gap: 0.5em;
-  margin:2em 20em;
-}
-.search>.btn{
-  background-color: #53CBFE;
-  color: #414749;
-}
-.App>.btn{
-  position: absolute;
-  background-color: #10A4F8;
-  padding-inline: 1rem;
-  font-size: 1.2em;
-  left: 40%;
-  right: 40%;
-  top: 22%;
-  z-index: 5000;
-}
-.whatIsUV{
-  padding: 1rem 5rem 1rem 5rem;
-  margin:2rem 10rem ;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 600;
-  color: var(--clr-primary);
-  border: var(--clr-primary) 2px solid;
-}
-.whatIsUV>h3{
-  font-weight: 400;
-  font-size: 1.5em;
-  /* color: #414749; */
-}
-.whatUVDo{
-  background-color: var(--clr-primary);
-  color: white;
-  padding: 2rem 10rem 2rem 10rem;
-  font-family: 'Work Sans', sans-serif;
-}
-.whatUVDo>h3{
-  font-weight: 400;
-  font-size: 1.5em;
-}
-.whatUVDo>p{
-  text-align: center;
+  border: 1px solid transparent;
 }

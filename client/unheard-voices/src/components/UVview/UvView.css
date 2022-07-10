@@ -1,0 +1,23 @@
+.UvView{
+    margin: 1rem 10rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position:relative;
+}
+
+.UvView>.btn{
+    background-color: var(--clr-primary);
+    align-self: center;
+    padding-inline: 1rem;
+}
+
+.tagLine{
+    display: block;
+    position: absolute;
+    text-align: center;
+    left: 0%;
+    right: 0%;
+    bottom: -10%;
+    color: var(--clr-primary);
+}

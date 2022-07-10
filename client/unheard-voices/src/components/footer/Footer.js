@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className='Footer'>
             <h4>Unheard Voices</h4>
-        <IconContext.Provider value={{color:'#158FC3'}}>
+        <IconContext.Provider  value={{color:'#158FC3'}}>
             <div className="social">
                 <a href="/"><FaFacebook/></a>
                 <a href="/"><FaGithub/></a>

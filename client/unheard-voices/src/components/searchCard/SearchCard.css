@@ -1,0 +1,42 @@
+.SearchCard{
+    margin: 1rem 10rem 2rem 10rem;
+}
+
+.SearchCard>.card{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 1vmax;
+    border: var(--clr-primary) solid 1px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.content>h4{
+    margin-inline-end: auto;
+    overflow-wrap: wrap;
+}
+.content>.btn{
+    width: max-content;
+    background-color: #10A4F8;
+    border-radius: 100vmax 100vmax;
+    padding:0.2rem 1rem;
+}
+.votes{
+    /* outline: auto; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-inline: auto;
+}
+.votes>span{
+    display: flex;
+    flex-direction: column;
+}
+/* .votes>span *{
+    outline: auto;
+} */
+.votes>span>h5{
+    margin-bottom: 0%;
+}
