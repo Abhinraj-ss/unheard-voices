@@ -1,10 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {Row,Button} from 'react-bootstrap'
 import {FaAngleDoubleUp,FaAngleDoubleDown,FaFileDownload,FaArrowLeft} from 'react-icons/fa'
+import { useNavigate } from "react-router-dom";
+
+import Footer from '../footer/Footer'
+import Header from '../header/Header'
 
 import './UvView.css'
 
 function UvView() {
+    let navigate = useNavigate();
     const [upvotes,setUpvotes] = useState(45)
     const [downvotes,setDownvotes] = useState(45)
     const handleUpvotes=()=>{
@@ -14,6 +19,8 @@ function UvView() {
         setDownvotes(downvotes+1)
     }
   return (
+    <>
+        <Header/>
     <div className='UvView'>
         <Row>
             <div className="content col-10">
@@ -56,13 +63,16 @@ function UvView() {
         <Button>
             <FaFileDownload/> Download UV Revolutionary card
         </Button>
-        <Button>
+        <Button onClick={()=>navigate('/')}>
            <FaArrowLeft/> Go back
         </Button>
         <span className='tagLine'>
         Its' time to end the era of <b>suppression</b> now its time for the ultimate <b>explosion</b>.
         </span>
     </div>
+        <Footer/>
+    </>
+    
   )
 }
 

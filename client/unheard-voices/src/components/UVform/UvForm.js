@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import { Card, Form, ButtonGroup,ToggleButton, Button, FormGroup, } from 'react-bootstrap'
 import {FaFileDownload} from 'react-icons/fa'
+import Footer from '../footer/Footer';
+import Header from '../header/Header';
 
 import './UvForm.css'
 function UvForm() {
@@ -14,7 +16,10 @@ function UvForm() {
   ];
   const [onHover, setOnHover] = useState(false)
   return (
-    <div className='UvForm'>
+    <>
+    <Header/>
+      <div className='UvForm'>
+      
       <Card style={{backgroundColor:'#BEE0FF'}}>
         <Card.Header>
           <h5>Fill your Complaint</h5>
@@ -69,7 +74,11 @@ function UvForm() {
       <span>
       Its' time to end the era of <b>suppression</b> now its time for the ultimate <b>explosion</b>.
       </span>
+      
     </div>
+    <Footer/>
+    </>
+    
   )
 }
 

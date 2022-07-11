@@ -1,6 +1,6 @@
 .UvForm{
     position: relative;
-    margin-top: 2rem;
+    margin-block: 2rem;
 }
 .UvForm .card{
     margin-inline: 10rem;

@@ -1,5 +1,5 @@
-import React from 'react'
 import {Button, FormControl, InputGroup} from 'react-bootstrap'
+import Footer from '../footer/Footer';
 
 import SearchCard from '../searchCard/SearchCard';
 import './Home.css'
@@ -70,6 +70,7 @@ function Home() {
           </p>
         </span>
       </div>
+      <Footer/>
     </div>
   )
 }

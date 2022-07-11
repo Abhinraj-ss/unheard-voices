@@ -8,3 +8,6 @@
 .Header>h2{
     margin-block: 0;
 }
+.backArrow{
+    cursor: pointer;
+}
