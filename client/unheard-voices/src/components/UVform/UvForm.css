@@ -1,6 +1,7 @@
 .UvForm{
     position: relative;
     margin-block: 2rem;
+    /* background-color: #6bbee19b; */
 }
 .UvForm .card{
     margin-inline: 10rem;
@@ -14,12 +15,13 @@
     display: flex;
     flex-direction: column;
 }
-.form-group{
-    outline: auto;
-}
+
 .UvForm .btn-primary{
     background-color: var(--clr-primary);
     align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-width: 8rem;
 }
 .UvForm >span{
@@ -28,6 +30,16 @@
     text-align: center;
     left: 0%;
     right: 0%;
-    bottom: -10%;
+    bottom: -5%;
     color: var(--clr-primary);
+}
+#link{
+    margin-top: 1em;
+    text-decoration: none;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+}
+.uvCard{
+    width: 15em;
 }

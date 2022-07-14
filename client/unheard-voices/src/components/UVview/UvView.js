@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {Row,Button} from 'react-bootstrap'
 import {FaAngleDoubleUp,FaAngleDoubleDown,FaFileDownload,FaArrowLeft} from 'react-icons/fa'
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
+import axios from 'axios';
 
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
@@ -10,8 +11,39 @@ import './UvView.css'
 
 function UvView() {
     let navigate = useNavigate();
-    const [upvotes,setUpvotes] = useState(45)
-    const [downvotes,setDownvotes] = useState(45)
+    const params = useParams()
+    const [uvData, setUVData] = useState(false)
+    const [upvotes,setUpvotes] = useState(uvData.upvotes)
+    const [downvotes,setDownvotes] = useState(uvData.downvotes)
+    const [url,setUrl] = useState(()=>{
+        if(process.env.NODE_ENV==='production'){
+          return "https://unheard-voices-backend.herokuapp.com" 
+        } else if(process.env.NODE_ENV==='development')
+          return "http://localhost:5000"
+      } )
+      const api = axios.create({
+        baseURL: url
+      })
+      useEffect(()=>{
+        getData()
+      },[])
+    const getData = async() =>{
+        await api.post("/",{uv_id:params.uvId})
+        .then(function (response) {
+          console.log(response);
+          if(response.status === 200){
+            console.log(response.data)
+            setUVData(response.data)
+            console.log("UV data exists!!");
+          }
+          else if(response.status === 201){
+            console.log("no UV data exists!!",response);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
     const handleUpvotes=()=>{
         setUpvotes(upvotes+1)
     }
@@ -20,27 +52,27 @@ function UvView() {
     }
   return (
     <>
-        <Header/>
+    <Header/>
     <div className='UvView'>
         <Row>
             <div className="content col-10">
                 <p>
-                UV -dsjbjdbf
+                UV - {uvData.uv_id}
                 </p>
                 <h4>
-                Mr. XXXX College of Engineering, XColony
+                {uvData.accused}
                 </h4>
             </div>
             <div className='votes col-auto'>
                 <span>
                     <FaAngleDoubleUp size={42} color='#05E150' onClick={handleUpvotes} />
                     <h5 style={{marginBottom:'auto'}}>
-                        {upvotes}
+                        {uvData.upvotes}
                     </h5>
                 </span>
                 <span>
                     <h5 style={{marginTop:'auto'}}>
-                        {downvotes}
+                        {uvData.downvotes}
                     </h5>
                     <FaAngleDoubleDown size={42} color='#F64C4C' onClick={handleDownvotes} />
                 </span>
@@ -48,17 +80,11 @@ function UvView() {
         </Row>
         <span>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-
+                {uvData.des_sm}
             </p>
         </span>
         <span>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+            {uvData.des_lg}
         </span>
         <Button>
             <FaFileDownload/> Download UV Revolutionary card

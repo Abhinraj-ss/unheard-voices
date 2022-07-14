@@ -1,39 +1,113 @@
-import {Button, FormControl, InputGroup} from 'react-bootstrap'
+import {Button, Form, FormControl, Image, InputGroup} from 'react-bootstrap'
 import Footer from '../footer/Footer';
+import axios from "axios"
+import {useNavigate} from 'react-router-dom'
+import {FaSuperpowers} from 'react-icons/fa'
 
 import SearchCard from '../searchCard/SearchCard';
 import './Home.css'
+import { useEffect, useState } from 'react';
+import logo from '../../Assets/uv-logo.svg'
 
 function Home() {
+  const [uvId ,setUvID] = useState(false)
+  const [uvData , setUVData] = useState(false)
+  const[count , setCount] = useState(0)
+  const [ rotate, setRotate] = useState(false)
+  console.log(uvId)
+  const navigate = useNavigate()
+  const [url,setUrl] = useState(()=>{
+    if(process.env.NODE_ENV==='production'){
+      return "https://unheard-voices-backend.herokuapp.com" 
+    } else if(process.env.NODE_ENV==='development')
+      return "http://localhost:5000"
+  } )
+  const api = axios.create({
+    baseURL: url
+  })
+  const handleSubmit = async(event) =>{
+    event.preventDefault();
+    event.stopPropagation();
+    if(uvId)
+      setRotate(true)
+    await api.post("/",{uv_id:uvId})
+    .then(function (response) {
+      console.log(response);
+      if(response.status === 200){
+        console.log(response.data)
+        setUVData(response.data)
+        setRotate(false)
+        console.log("UV data exists!!");
+      }
+         
+      else if(response.status === 201){
+        console.log("no UV data exists!!",response);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  useEffect(
+    ()=>{
+      getCount()
+      async function getCount(){
+        api.post(
+          '/count'
+        )
+        .then(function(response){
+          console.log(response)
+          if(response.status === 200){
+            console.log(response.data)
+            setCount(response.data)
+            console.log("UV data exists!!");
+          }
+             
+          else if(response.status === 201){
+            console.log("no UV data exists!!",response);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }},[]
+  )
   return (
     <div className='Home'>
         <div className="hero">
+          <Image
+          alt='uv-logo'
+          src={logo}
+          width={80}/>
         <h1>
         Unheard Voices
         </h1>
         <p>
         Its' time to end the era of <b>suppression</b> now its time for the ultimate <b>explosion</b>.
         </p> 
-        <div className='search'>
-          <InputGroup>
-          <InputGroup.Text>UV-</InputGroup.Text>
-          <FormControl type='text' placeholder='Enter complaint ID'/>
+        <Form className='search'onSubmit={(e)=>handleSubmit(e)}>
+          <InputGroup >
+          <InputGroup.Text>UV -</InputGroup.Text>
+          <FormControl type='text' placeholder='Enter complaint ID' onChange={(e)=>setUvID(e.target.value)}/>
           </InputGroup>
-          <Button>
-            Search
+          <Button onClick={(e)=>handleSubmit(e)} type='submit'>
+            <FaSuperpowers className="submitRotate" size={20} data-rotate={rotate}/> &nbsp;Search
           </Button>
-        </div>
+        </Form>
         <h4>
-        Registered Complaints : <b>4233</b>
+        Registered Complaints : <b>{count}</b>
         </h4>
-        <Button>
+        <Button onClick={()=>navigate('/UVform')}>
           Raise a complaint
         </Button>
       </div>
+        {
+          uvData &&
+          <div className="searchResult">
+          <SearchCard uvData = {uvData}/>
+          </div>
+        }
         
-        <div className="searchResult">
-          <SearchCard/>
-        </div>
       <div className="whatIsUV">
         <h3>
           WHAT IS UNHEARD VOICES ?
@@ -46,7 +120,6 @@ function Home() {
         <p><b>UNHEARD VOICES</b> will help you to resolve your issue by spreading your issue anonymously. 
         </p>
         <span>
-          <p>
             <ul>
               <li>
                 You can start by clicking <b>Raise a Complaint</b>. Write about your issue or concern and to which organization it belongs. 
@@ -63,11 +136,8 @@ function Home() {
               </li>
               <li>
               Anyone can view your anonymous complaint by you using the unique complaint ID. Supporters can UPVOTE your complaint as a token of support.
-
               </li>
             </ul>
-          
-          </p>
         </span>
       </div>
       <Footer/>

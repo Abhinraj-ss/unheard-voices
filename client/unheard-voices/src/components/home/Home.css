@@ -10,7 +10,7 @@
   position: absolute;
   background-color: var(--clr-primary);
   clip-path: ellipse(80% 90% at 51% 0%);
-  width: 100vw;
+  width: 100%;
   height: 100%;
   left: 0%;
   top: 0%;
@@ -32,9 +32,30 @@
     gap: 0.5em;
     margin:1em 20em 1em 20em;
   }
+  
   .search>.btn{
     background-color: #53CBFE;
     color: #414749;
+    display: inline-flex;
+    align-items: center;
+  }
+  .submitRotate[data-rotate='true']{
+    -webkit-animation:rotateIcn 4s linear infinite;
+    -moz-animation:rotateIcn 4s linear infinite;
+    animation: rotateIcn 3s linear infinite;
+  }
+  @-moz-keyframes rotateIcn { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+  @-webkit-keyframes rotateIcn { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+  @keyframes rotateIcn {
+    100%{
+      -webkit-transform: rotate(360deg); 
+      transform: rotate(360deg);
+    }
+    
   }
   .hero>.btn{
     position: absolute;
@@ -49,6 +70,7 @@
   .searchResult{
     position: relative;
     isolation: isolate;
+    margin-bottom: 3rem;
   }
   .searchResult::after{
     content: '';
@@ -61,7 +83,7 @@
   }
   .whatIsUV{
     padding: 1rem 3rem 1rem 3rem;
-    margin:3rem 10rem 2rem 10rem ;
+    margin:0rem 10rem 2rem 10rem ;
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     color: var(--clr-primary);
