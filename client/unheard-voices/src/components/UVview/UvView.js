@@ -87,7 +87,7 @@ function UvView() {
             {uvData.des_lg}
         </span>
         <Button>
-            <FaFileDownload/> Download UV Revolutionary card
+            <FaFileDownload/> Download UV Card
         </Button>
         <Button onClick={()=>navigate('/')}>
            <FaArrowLeft/> Go back

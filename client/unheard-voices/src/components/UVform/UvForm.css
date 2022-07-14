@@ -1,12 +1,11 @@
 .UvForm{
     position: relative;
     margin-block: 2rem;
-    /* background-color: #6bbee19b; */
 }
 .UvForm .card{
-    margin-inline: 10rem;
+    margin-inline: 10%;
     border-radius: 1vmax;
-    padding: 2rem;
+    padding: 2%;
 }
 .card-header{
     background-color: transparent;
@@ -32,6 +31,8 @@
     right: 0%;
     bottom: -5%;
     color: var(--clr-primary);
+    font-size: clamp(0.5rem,2vw + 0.5rem, 1rem);
+    margin-inline: clamp(1rem,2vw + 0.5rem, 1.5rem);
 }
 #link{
     margin-top: 1em;
@@ -41,5 +42,15 @@
     align-items: center;
 }
 .uvCard{
-    width: 15em;
+    width: 20em;
+}
+.card-body>span{
+    margin-top: 1.5em;
+    text-align: center;
+}
+@media screen and (max-width:600px) {
+    .uvCard{
+        width: 100%;
+        margin-inline: 10%;
+    }
 }

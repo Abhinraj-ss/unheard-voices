@@ -11,7 +11,7 @@ import logo from '../../Assets/uv-logo.svg'
 
 function Home() {
   const [uvId ,setUvID] = useState(false)
-  const [uvData , setUVData] = useState(false)
+  const [uvData , setUVData] = useState(true)
   const[count , setCount] = useState(0)
   const [ rotate, setRotate] = useState(false)
   console.log(uvId)

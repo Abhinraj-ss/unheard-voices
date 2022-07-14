@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import { Card, Form, ButtonGroup,ToggleButton, Button, FormGroup } from 'react-bootstrap'
+import { Card, Form, ButtonGroup,ToggleButton, Button, FormGroup, Image } from 'react-bootstrap'
 import {FaFileDownload,FaSuperpowers} from 'react-icons/fa'
 import axios from 'axios'
 
@@ -217,6 +217,7 @@ function UvForm() {
           <br/>
             <div className="d-flex mx-auto uvCard">
               <UvCard uvID = {uvID} date={date} accent={colors[radioValue]} accusedArr = {submitted?accused:accusedArr} descArr={submitted?desc:descArr}/>
+              
             </div>
             {submitted &&
             // eslint-disable-next-line

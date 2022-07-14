@@ -1,9 +1,10 @@
 .hero{
-    position:relative;
-    text-align: center; 
-    color: #BEE0FF;
-    padding-block: 2rem 4rem;
-    z-index: 1;
+  position:relative;
+  display: block;
+  text-align: center; 
+  color: #BEE0FF;
+  padding-block: 2rem 4rem;
+  z-index: 1;
   }
 .hero::before{
   content: '';
@@ -17,20 +18,23 @@
   z-index: -1;
 }
   .hero>h1{
-    font-size: 3em;
+    font-size:var(--f-xl);
     font-weight: 900;
   }
  .hero>h1{
     margin-block: 0em;
   }
   .hero>p{
+    font-size: var(--f-400);
+    margin-inline: clamp(1rem,2vw + 0.5rem, 1.5rem);
     margin-bottom: 0.5rem;
   }
   .search{
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     gap: 0.5em;
-    margin:1em 20em 1em 20em;
+    margin:1em auto;
+    width:clamp(18rem,50vw + 2rem, 30rem);
   }
   
   .search>.btn{
@@ -57,13 +61,20 @@
     }
     
   }
+
+  .hero>h4{
+    font-size: clamp(1rem,2vw + 0.5rem, 1.5rem);
+  }
   .hero>.btn{
     position: absolute;
     background-color: #10A4F8;
     padding-inline: 1rem;
-    font-size: 1.2em;
-    left: 40%;
-    right: 40%;
+    width: fit-content;
+    font-size: clamp(0.8rem, 2vw + 0.2rem, 1.5rem);
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
     bottom: 5%;
     
   }
@@ -72,6 +83,7 @@
     isolation: isolate;
     margin-bottom: 3rem;
   }
+
   .searchResult::after{
     content: '';
     width: 100%;
@@ -82,28 +94,33 @@
     z-index: -1;
   }
   .whatIsUV{
-    padding: 1rem 3rem 1rem 3rem;
-    margin:0rem 10rem 2rem 10rem ;
+    padding: 5% 5%;
+    margin:0 15% 2em 15% ;
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     color: var(--clr-primary);
     border: var(--clr-primary) 1px solid;
   }
-  .whatIsUV>h3{
+
+  @media screen and (max-width:600px) {
+    .whatIsUV{
+      padding: 5% 3%;
+      margin:0 5% 2em 5% ;
+    }
+  }
+  .whatIsUV>h3,.whatUVDo>h3{
     font-weight: 400;
-    font-size: 1.5em;
-    /* color: #414749; */
+    font-size: var(--f-600);
   }
   .whatUVDo{
     background-color: var(--clr-primary);
     color: white;
-    padding: 2rem 10rem 2rem 10rem;
+    padding: 4% 4%;
     font-family: 'Work Sans', sans-serif;
   }
-  .whatUVDo>h3{
-    font-weight: 400;
-    font-size: 1.5em;
-  }
-  .whatUVDo>p{
+  p{
     text-align: center;
+  }
+  .whatIsUV>p , .whatUVDo>p{
+    font-size: var(--f-400);
   }
