@@ -9,7 +9,7 @@ function SearchCard({uvData}) {
     const colors = {1:"#097969",2:"#FFC000",3:"red"}
     return (
         <div className='SearchCard'>
-            <Card style={{backgroundColor:'#BEE0FF',boxShadow:"0 0 20px"+colors[uvData.severity], borderColor:colors[uvData.severity]}} body>
+            <Card style={{backgroundColor:'#BEE0FF',boxShadow:`0 0 20px ${colors[uvData.severity]}`, borderColor:colors[uvData.severity]}} body>
                 <Row>
                 <div className="content col-10">
                     <p>

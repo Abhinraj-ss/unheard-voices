@@ -35,8 +35,8 @@ function UvForm() {
   const [uvID, setUvID] = useState("{your UV-ID}")
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-  const [accusedArr, setAccusedArr] = useState([])
-  const [descArr, setDescArr] = useState([])
+  const [accusedArr, setAccusedArr] = useState([""])
+  const [descArr, setDescArr] = useState([""])
   const [accused, setAccused] = useState(["Accused name comes here."])
   const [desc, setDesc] = useState(["your issue in short comes here."])
 

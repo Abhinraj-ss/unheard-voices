@@ -14,7 +14,6 @@ root.render(
         <Route exact path="/" element={<App />} />
         <Route path="/UVform" element={<UvForm/>}/>
         <Route path="/uvid=:uvId" element={<UvView/>} />
-        {/* <Route path="*" element={<PageNotFound/>} /> */}
       </Routes>
   </BrowserRouter>
 );

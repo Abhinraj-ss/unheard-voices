@@ -34,7 +34,6 @@
     left: 1.5rem;
 }
 .votes{
-    /* outline: auto; */
     display: flex;
     flex-direction: row;
     justify-content: center;

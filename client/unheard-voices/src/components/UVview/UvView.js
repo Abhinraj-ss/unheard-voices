@@ -17,10 +17,10 @@ function UvView() {
     const [uvData, setUVData] = useState(false)
     const [upvotes,setUpvotes] = useState(0)
     const [downvotes,setDownvotes] = useState(0)
-    const [accusedArr, setAccusedArr] = useState([])
-    const [descArr, setDescArr] = useState([])
-    const [accused, setAccused] = useState()
-    const [desc, setDesc] = useState()
+    const [accusedArr, setAccusedArr] = useState([""])
+    const [descArr, setDescArr] = useState([""])
+    const [accused, setAccused] = useState([""])
+    const [desc, setDesc] = useState([""])
     const [showCard, setShowCard] = useState(false)
     const cardRef = useRef(null)
     const colors = {1:"white",2:"#ffc107c5",3:"#f23b4dd2"}
@@ -62,7 +62,7 @@ function UvView() {
         ()=>{
             let count = 0
             let tmp = [""]
-            accusedArr.forEach(
+            accusedArr?.forEach(
               (element)=>{
                 if(tmp[count] === "Accused name comes here."){
                   tmp[count]=""
@@ -80,7 +80,7 @@ function UvView() {
     
             count = 0
             tmp = [""]
-            descArr.forEach(
+            descArr?.forEach(
               (element)=>{
                 if(tmp[count] === "your issue in short comes here."){
                   tmp[count]=""
