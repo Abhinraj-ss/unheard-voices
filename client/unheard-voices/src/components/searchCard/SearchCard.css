@@ -1,5 +1,6 @@
 .SearchCard{
-    margin: 5% 10%;
+    margin-inline: 15%;
+    margin-bottom: 3%;
 }
 @media screen and (max-width:600px) {
     
@@ -11,36 +12,58 @@
     display: flex;
     flex-direction: row;
     border-radius: 1vmax;
-    border: var(--clr-primary) solid 1px;
+    border: var(--clr-primary) solid 1.5px;
 }
 .content{
     display: flex;
     flex-direction: column;
 }
+.content>p{
+    text-align: start;
+}
 .content>h4{
     margin-inline-end: auto;
     overflow-wrap: wrap;
+    text-align: start;
+    font-size: var(--f-400);
+    margin-bottom: 2rem;
 }
 .content>.btn{
     width: max-content;
     background-color: #10A4F8;
     border-radius: 100vmax 100vmax;
-    padding:0.2rem 1rem;
+    padding:0.1rem 1rem;
+    position: absolute;
+    bottom: 6%;
+    left: 1.5rem;
 }
 .votes{
     /* outline: auto; */
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-inline: auto;
+    position: absolute;
+    right: 8%;
+    top: 1.2rem;
+    width: clamp(1rem, 2vw + 0.2rem, 1.2rem);
+    gap: 0.5rem;
 }
 .votes>span{
     display: flex;
     flex-direction: column;
+    font-size: var(--f-500);
 }
-/* .votes>span *{
-    outline: auto;
-} */
+ .votes>span *{
+    /* outline: auto; */
+}
+.arrow{
+    width: clamp(1rem, 2vw + 0.2rem, 1.2rem);
+}
 .votes>span>h5{
     margin-bottom: 0%;
+}
+.SearchCard>.card>.card-body>p{
+    position: absolute;
+    right: 4%;
+    bottom: 1%;
 }

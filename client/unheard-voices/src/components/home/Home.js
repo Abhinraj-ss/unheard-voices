@@ -3,11 +3,15 @@ import Footer from '../footer/Footer';
 import axios from "axios"
 import {useNavigate} from 'react-router-dom'
 import {FaSuperpowers} from 'react-icons/fa'
+import Lottie from 'lottie-react'
+
 
 import SearchCard from '../searchCard/SearchCard';
 import './Home.css'
 import { useEffect, useState } from 'react';
 import logo from '../../Assets/uv-logo.svg'
+import loading from '../../Assets/uv-logo.json'
+
 
 function Home() {
   const [uvId ,setUvID] = useState(false)
@@ -48,6 +52,8 @@ function Home() {
       console.log(error);
     });
   }
+
+
   useEffect(
     ()=>{
       getCount()
@@ -88,24 +94,34 @@ function Home() {
         <Form className='search'onSubmit={(e)=>handleSubmit(e)}>
           <InputGroup >
           <InputGroup.Text>UV -</InputGroup.Text>
-          <FormControl type='text' placeholder='Enter complaint ID' onChange={(e)=>setUvID(e.target.value)}/>
+          <FormControl type='text' placeholder='Enter complaint ID' value={uvId?uvId:""} onChange={(e)=>setUvID(e.target.value.toUpperCase())}/>
           </InputGroup>
           <Button onClick={(e)=>handleSubmit(e)} type='submit'>
             <FaSuperpowers className="submitRotate" size={20} data-rotate={rotate}/> &nbsp;Search
           </Button>
         </Form>
         <h4>
-        Registered Complaints : <b>{count}</b>
+        Unheard Voices Raised : <b>{count}</b>
         </h4>
         <Button onClick={()=>navigate('/UVform')}>
-          Raise a complaint
+          Raise your voice
         </Button>
       </div>
         {
-          uvData &&
+          uvData ?
+          
           <div className="searchResult">
           <SearchCard uvData = {uvData}/>
-          </div>
+          </div>:
+          <>
+          {
+            rotate &&
+            <Lottie className='loading-search' animationData={loading} loop={true}/>
+
+          }
+          </>
+          
+
         }
         
       <div className="whatIsUV">
@@ -117,8 +133,7 @@ function Home() {
       </div>
       <div className="whatUVDo">
         <h3>WHAT UNHEARD VOICES DO?</h3>
-        <p><b>UNHEARD VOICES</b> will help you to resolve your issue by spreading your issue anonymously. 
-        </p>
+        <p><b>UNHEARD VOICES</b> will help you to resolve your issue by spreading your issue anonymously.</p>
         <span>
             <ul>
               <li>

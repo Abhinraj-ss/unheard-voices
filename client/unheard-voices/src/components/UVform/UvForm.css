@@ -44,7 +44,7 @@
 .uvCard{
     width: 20em;
 }
-.card-body>span{
+.uvCard .card-body>span{
     margin-top: 1.5em;
     text-align: center;
 }
@@ -52,5 +52,9 @@
     .uvCard{
         width: 100%;
         margin-inline: 10%;
+    }
+    .UvForm .card{
+        margin-inline: 5%;
+        padding-inline: 1%;
     }
 }

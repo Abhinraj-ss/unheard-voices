@@ -35,11 +35,10 @@ function UvForm() {
   const [uvID, setUvID] = useState("{your UV-ID}")
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-  const [accusedArr, setAccusedArr] = useState(["Accused name comes here."])
-  const [descArr, setDescArr] = useState([
-  "your issue in short comes here."])
-  const [accused, setAccused] = useState([])
-  const [desc, setDesc] = useState([])
+  const [accusedArr, setAccusedArr] = useState([])
+  const [descArr, setDescArr] = useState([])
+  const [accused, setAccused] = useState(["Accused name comes here."])
+  const [desc, setDesc] = useState(["your issue in short comes here."])
 
   const handleValidate =(event) =>{
     const form = event.currentTarget;
@@ -72,7 +71,6 @@ function UvForm() {
       if(response.status === 200){
         setUvID(response.data)
         setRotate(false)
-        processData()
         setSubmitted(true)
         console.log("UV data added!!");
         
@@ -87,15 +85,6 @@ function UvForm() {
     });
   } 
 
-  const processData = () =>{
-    console.log(uvData,radioValue,date)
-    setAccusedArr(uvData.name.split(" "))
-    setDescArr(uvData.des_sm.split(" "))
-    console.log(accusedArr)
-
-    
-    
-  }
   useEffect(()=>{
     const svg =  document.getElementById('svg')
     const {x, y, width, height} = svg.viewBox.baseVal;
@@ -119,11 +108,10 @@ function UvForm() {
 
   useEffect(()=>{
     let count = 0
+    accused.length = 0
+    accused[0]=""
     accusedArr.forEach(
       (element)=>{
-        if(accused[count] === "Accused name comes here."){
-          accused[count]=""
-        }
         if((accused[count]+" "+element).length <= 30){
           accused[count] += (" "+element)
         }
@@ -131,18 +119,16 @@ function UvForm() {
           count+=1
           accused.push(element)
         }
-        console.log(accused)
       }
     )
   },[accusedArr])
 
   useEffect(()=>{
     let count = 0
+    desc.length = 0
+    desc[0]=""
     descArr.forEach(
       (element)=>{
-        if(desc[count] === "your issue in short comes here."){
-          desc[count]=""
-        }
         if((desc[count]+" "+element).length <= 34){
           desc[count] += (" "+element)
         }
@@ -150,7 +136,6 @@ function UvForm() {
           count+=1
           desc.push(element)
         }
-        console.log(desc)
       }
     )
   },[descArr])
@@ -168,14 +153,14 @@ function UvForm() {
           <Form noValidate validated={validated} onSubmit={handleValidate}>
             <Form.Group className="mb-3">
               <Form.Label > Name of the Accused </Form.Label>
-              <Form.Control name="name" type="text" maxLength={150} required />
+              <Form.Control name="name" type="text" maxLength={150} onChange={(e)=>setAccusedArr(e.target.value.split(" "))} required />
               <Form.Control.Feedback type="invalid">
                 Title is a required field.
               </Form.Control.Feedback>
             </Form.Group >
             <FormGroup className="mb-3">
               <Form.Label > Write about the issue In  less than 200 characters </Form.Label>
-              <Form.Control as="textarea" type="text" name="des_sm" minLength={10} maxLength={200} style={{height:"10vmax"}} required/>
+              <Form.Control as="textarea" type="text" name="des_sm" minLength={10} maxLength={200} onChange={(e)=>setDescArr(e.target.value.split(" "))} style={{height:"10vmax"}} required/>
               <Form.Control.Feedback type="invalid">
                 Title is a required field of minimum 10 characters.
               </Form.Control.Feedback>
@@ -216,15 +201,13 @@ function UvForm() {
           </span>
           <br/>
             <div className="d-flex mx-auto uvCard">
-              <UvCard uvID = {uvID} date={date} accent={colors[radioValue]} accusedArr = {submitted?accused:accusedArr} descArr={submitted?desc:descArr}/>
-              
+              <UvCard uvID = {uvID} date={date} accent={colors[radioValue]} accusedArr = {accused} descArr={desc}/> 
             </div>
             {submitted &&
             // eslint-disable-next-line
               <a href="" id="link" download={"UV-"+uvID}>
               <Button>
-              <FaFileDownload/>
-              &nbsp;Download
+              <FaFileDownload/> Download
               </Button>
               </a>
             }  
