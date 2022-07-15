@@ -2,10 +2,6 @@
     margin-inline: 15%;
     margin-bottom: 3%;
 }
-@media screen and (max-width:600px) {
-    
-   
-}
 
 .SearchCard>.card{
     padding: 0.5rem;
@@ -53,9 +49,7 @@
     flex-direction: column;
     font-size: var(--f-500);
 }
- .votes>span *{
-    /* outline: auto; */
-}
+
 .arrow{
     width: clamp(1rem, 2vw + 0.2rem, 1.2rem);
 }

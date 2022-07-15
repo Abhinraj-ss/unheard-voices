@@ -109,8 +109,8 @@ function UvForm() {
   useEffect(()=>{
     let count = 0
     accused.length = 0
-    accused[0]=""
-    accusedArr.forEach(
+    accused.push("")
+    accusedArr?.forEach(
       (element)=>{
         if((accused[count]+" "+element).length <= 30){
           accused[count] += (" "+element)
@@ -126,8 +126,8 @@ function UvForm() {
   useEffect(()=>{
     let count = 0
     desc.length = 0
-    desc[0]=""
-    descArr.forEach(
+    desc.push("")
+    descArr?.forEach(
       (element)=>{
         if((desc[count]+" "+element).length <= 34){
           desc[count] += (" "+element)
@@ -204,7 +204,6 @@ function UvForm() {
               <UvCard uvID = {uvID} date={date} accent={colors[radioValue]} accusedArr = {accused} descArr={desc}/> 
             </div>
             {submitted &&
-            // eslint-disable-next-line
               <a href="" id="link" download={"UV-"+uvID}>
               <Button>
               <FaFileDownload/> Download

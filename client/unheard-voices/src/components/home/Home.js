@@ -76,8 +76,7 @@ function Home() {
         .catch(function (error) {
           console.log(error);
         });
-      }},[]
-  )
+      }})
   return (
     <div className='Home'>
         <div className="hero">
@@ -94,7 +93,7 @@ function Home() {
         <Form className='search'onSubmit={(e)=>handleSubmit(e)}>
           <InputGroup >
           <InputGroup.Text>UV -</InputGroup.Text>
-          <FormControl type='text' placeholder='Enter complaint ID' value={uvId?uvId:""} onChange={(e)=>setUvID(e.target.value.toUpperCase())}/>
+          <FormControl type='text' placeholder='Enter complaint ID' value={uvId?uvId:""} onChange={(e)=>setUvID(e.target.value?.toUpperCase())}/>
           </InputGroup>
           <Button onClick={(e)=>handleSubmit(e)} type='submit'>
             <FaSuperpowers className="submitRotate" size={20} data-rotate={rotate}/> &nbsp;Search

@@ -161,9 +161,6 @@ function UvView() {
       }
     },[cardRef.current])
 
-    const handleDownload = () =>{
-
-    }
   return (<>
   {uvData?<>
     <Header/>
@@ -208,7 +205,7 @@ function UvView() {
                 <UvCard  uvID = {uvData.uv_id} date={new Date(uvData.date).toLocaleDateString(['ban', 'id'])} accent={colors[uvData.severity]} accusedArr = {accused} descArr={desc} />
             </div>
           }
-          <a href="" id="link" download={"UV-"+uvData.uv_id} onClick={console.log("clicked")} >
+          <a href="" id="link" download={`UV-${uvData.uv_id}`} onClick={console.log("clicked")} >
             <Button>
                 <FaFileDownload/> Download UV Card
             </Button>
